@@ -2,12 +2,12 @@ import tkinter as tk
 from tkinter import font
 
 def generar_tabla():
-    # Crear la ventana principal
+    # Ventana principal
     ventana = tk.Tk()
     ventana.title("Tabla de Complemento a 2 (8 bits)")
     ventana.geometry("450x600") # Tamaño inicial de la ventana
 
-    # Crear un marco (Frame) para agrupar el texto y el scrollbar
+    # Crear el marco (Frame)
     frame = tk.Frame(ventana)
     frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
 
@@ -15,15 +15,15 @@ def generar_tabla():
     scrollbar = tk.Scrollbar(frame)
     scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
-    # Crear el área de Texto
-    # Usamos fuente "Courier" (monoespaciada) para que las columnas se alineen perfecto
+    # Área de Texto
+    # Usamos fuente "Courier" para que las columnas se alineen
     fuente_mono = font.Font(family="Courier", size=11)
     area_texto = tk.Text(frame, yscrollcommand=scrollbar.set, font=fuente_mono, wrap=tk.NONE)
     area_texto.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
     
     scrollbar.config(command=area_texto.yview)
 
-    # Generar el encabezado de la tabla
+    # Encabezado de la tabla
     contenido = "Dec | Entrada (Dipswitch) | Salida (LEDs)\n"
     contenido += "-" * 45 + "\n"
 
@@ -46,7 +46,7 @@ def generar_tabla():
     # Insertar todo el texto generado en la ventana
     area_texto.insert(tk.END, contenido)
     
-    # ¡Muy importante! Cambiamos el estado a DISABLED para que sea SOLO LECTURA
+    # Modo SOLO LECTURA
     area_texto.config(state=tk.DISABLED) 
 
     # Iniciar la interfaz gráfica
